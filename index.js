@@ -1,15 +1,25 @@
 const express = require('express');
-const { listen } = require('express/lib/application');
-const path = require('path');
+const expHbs = require('express-handlebars')
 
 const server = express();
 
+const hbs = expHbs.create({
+    defaultLayout: 'main',
+    extname: 'hbs'
+})
+
+server.engine('hbs', hbs.engine)
+server.set('view engine', 'hbs')
+server.set('views', 'pages')
+
+server.use(express.static('public'))
+
 server.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'pages', 'index.html'))
+    res.render('index')
 })
 
 server.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, 'pages', 'about.html'))
+    res.render('about')
 })
 
 const PORT = process.env.PORT || 5000;
