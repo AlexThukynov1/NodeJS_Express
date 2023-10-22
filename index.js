@@ -16,6 +16,7 @@ server.set('view engine', 'hbs')
 server.set('views', 'pages')
 
 server.use(express.static('public'))
+server.use(express.urlencoded({extended:true}))
 server.use('/', homeRoute)
 server.use('/courses', coursesRoute)
 server.use('/add', addRoute)

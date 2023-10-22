@@ -1,0 +1,13 @@
+[
+    {
+        "price": "8000",
+        "img": "https://raw.githubusercontent.com/angular/angular/main/aio/src/assets/images/logos/angular/angular.png",
+        "id": "d68a46f2-db45-4155-bdc5-80ab8ff2e17f"
+    },
+    {
+        "title": "Abgular 9",
+        "price": "9500",
+        "img": "https://raw.githubusercontent.com/angular/angular/main/aio/src/assets/images/logos/angular/angular.png",
+        "id": "c1f6c447-7e1a-4e00-9e2e-848d0b06abd1"
+    }
+]
