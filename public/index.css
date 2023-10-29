@@ -34,3 +34,8 @@ body {
   .course .price.big {
     font-size: 2.5rem;
   }
+  .card-action.course-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
