@@ -5,7 +5,11 @@
     <div class="col s6 offset-s3">
       <div class="card">
         <div class="card-image">
-          <img src="{{img}}">
+          {{#if img}}
+            <img src="{{img}}">
+          {{else}}
+            <img src="/media/placeholder.png" alt="">
+          {{/if}}
         </div>
         <div class="card-content">
             <span class="card-title">{{title}}</span>

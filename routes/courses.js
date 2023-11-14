@@ -4,7 +4,6 @@ const Course = require('../models/course')
 
 router.get('/', async (req, res) => {
     const courses = await Course.find()
-    console.log(courses)
     res.render('courses', {
         title: 'Courses page',
         isCourses: true,
@@ -30,6 +29,16 @@ router.get('/:id/edit', async (req, res) => {
         await Course.findByIdAndUpdate(id, req.body)
         return res.redirect('/courses')
     })
+})
+
+router.post('/remove', async (req, res) => {
+    try {
+        await Course.deleteOne({_id: req.body.id})
+        res.redirect('/courses')
+    } catch (error) {
+        console.log(error)
+    }
+    
 })
 
 router.get('/:id',  async(req, res) => {
