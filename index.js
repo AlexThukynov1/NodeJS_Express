@@ -8,6 +8,7 @@ const homeRoute = require('./routes/home')
 const addRoute = require('./routes/add')
 const cardRoute = require('./routes/card')
 const coursesRoute = require('./routes/courses')
+const User = require('./models/user')
 
 const server = express();
 
@@ -20,6 +21,17 @@ const hbs = expHbs.create({
 server.engine('hbs', hbs.engine)
 server.set('view engine', 'hbs')
 server.set('views', 'pages')
+
+server.use( async(req, res, next) => {
+    try {
+        const user = await User.findById('65588f8f57aea44bd28d6833')
+        req.user = user
+        next()
+    } catch (error) {
+        console.log(error)
+    }
+    
+})
 
 server.use(express.static(path.join(__dirname, 'public')))
 server.use(express.urlencoded({extended:true}))
@@ -40,6 +52,15 @@ async function start () {
         server.listen(PORT, () => {
             console.log(`Server running on ${PORT} port`)
         })
+        const candidate = await User.findOne()
+        if(!candidate) {
+            const user = new User({
+                email: 'test_mail@gmail.com',
+                name: 'Test Name',
+                card: {items: []}
+            })
+            await user.save()
+        }
     } catch (error) {
         console.log(Error)
     }
