@@ -48,9 +48,11 @@ body {
     align-items: flex-start;
     flex-wrap:wrap;
     justify-content: flex-start;
+    align-self: stretch;
   }
   .row {
     max-width: 300px;
+    align-self: stretch;
   }
   .card-image1 {
     width: 300px;
